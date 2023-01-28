@@ -28,3 +28,12 @@ export type RequestError = {
   name: string,
   message: string,
 };
+
+export type Tickets = {
+
+name: string,
+price: number,
+isRemote: boolean,
+includesHotel: boolean,
+
+};
