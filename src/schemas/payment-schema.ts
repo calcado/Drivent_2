@@ -1,13 +1,13 @@
-import joi, { number } from "joi";
+import joi from "joi";
 
-const paymentSchema = joi.object({
+export const paymentSchema = joi.object({
 ticketId: joi.number().required,
 cardData: joi.object({
     issuer: joi.string().required(),
-    number: joi.string().required(),
+    number: joi.number().required(),
     name: joi.string().required(),
-    expirationDate: joi.date().required(),
-    cvv: joi.string().required(),
+    expirationDate: joi.string().required(),
+    cvv: joi.number().required(),
 }).required(),
 })
 

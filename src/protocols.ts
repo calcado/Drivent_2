@@ -41,7 +41,7 @@ export type Ticket = {
 export type Tickets = {
   
     id: number,
-    status: string, //RESERVED | PAID
+    status: string, 
     ticketTypeId: number,
     enrollmentId: number,
     TicketType: {
@@ -65,7 +65,7 @@ export type TicketTypeId = {
 export type Payments = {
 	ticketId: number,
 	cardData: {
-		issuer: string, //VISA | MASTERCARD
+		issuer: string, 
     number: number,
     name: string,
     expirationDate: Date,

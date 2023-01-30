@@ -36,6 +36,7 @@ const userPayment = await paymentRepository.postPayment(paymentUpdate);
 if(!userPayment) throw notFoundError;
 
 return userPayment
+
 }
 
 const paymentsService = {
