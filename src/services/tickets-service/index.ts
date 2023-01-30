@@ -26,13 +26,24 @@ if (!userTicket)  throw notFoundError();
 return userTicket
 }
 
-async function postUserTicketService(){
+async function postUserTicketService(userId:number, ticketTypeId: number){
+const enrollment = await enrollmentRepository.findWithAddressByUserId(userId)
+if(!enrollment) throw notFoundError();
+const enrollmentId = enrollment.id
+const status = "RESERVED";
 
+const postedTicket = await ticketsRepository.postTicket({
+  ticketTypeId, enrollmentId, status
+})
+
+if(!postedTicket) throw notFoundError();
+return postedTicket
 }
 
 const ticketsService = {
     getTicketType,
     getUserTicketService,
+    postUserTicketService,
 }
 
 export default ticketsService;

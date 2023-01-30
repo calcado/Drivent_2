@@ -4,7 +4,12 @@ import paymentRepository from "@/repositories/payment-repositroty";
 import ticketsRepository from "@/repositories/tickets-repository";
 
 async function getPaymentService(tickedId: number, userId:number){
-const existTicket = await ticketsRepository.getTicketsUser
+const existTicket = await ticketsRepository.getTicketsUser();
+
+if(!existTicket){
+    
+}
+
 
 }
 

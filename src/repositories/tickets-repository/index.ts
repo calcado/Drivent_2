@@ -23,15 +23,13 @@ async function postTicket(data:
     return prisma.ticket.create({
     data,
     select : {
-    status,
-    ticketTypeId,
-    enrollmentId,
-    TicketType:{
-        name,
-        price,
-        isRemote,
-        includesHotel
-    }
+    id: true,
+    status: true,
+    ticketTypeId: true,
+    enrollmentId: true,
+    TicketType:true,
+    createdAt: true,
+    updatedAt: true
     }
     })
 
