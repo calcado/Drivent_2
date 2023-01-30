@@ -11,7 +11,7 @@ async function postPayment(
     data: Prisma.PaymentUncheckedCreateInput 
     ){
 return prisma.payment.create({
-    data,    
+    data    
 })
 }
 

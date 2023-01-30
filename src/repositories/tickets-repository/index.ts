@@ -35,12 +35,33 @@ async function postTicket(data:
 
 } 
 
+async function findTicketId(id:number){
+    return prisma.ticket.findFirst({
+        where:{id},
+        include:{
+            Enrollment: true,
+            TicketType: true
+        }
+    })
+}
 
+async function updateTicket(id:number){
+    return prisma.ticket.update({
+        where:{
+            id,
+        },
+        data:{
+            status:"PAID",
+        }
+    })
+    }
 
 const ticketsRepository ={
     getTicketsByType,
     getTicketsUser,
-    // postTicket
+    postTicket,
+    findTicketId,
+    updateTicket
 }
 
 

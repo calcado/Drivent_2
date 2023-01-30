@@ -8,7 +8,7 @@ export async function getTicketsType(req:Request,res:Response){
   const ticketsTypes = await ticketsService.getTicketType(); 
   res.send(ticketsTypes).status(200)
 }catch(err){
-res.send(httpStatus.NO_CONTENT);
+res.send(httpStatus.NOT_FOUND);
 }
 
 }

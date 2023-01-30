@@ -74,12 +74,11 @@ export type Payments = {
 }
 
 export type PaymentsProcess = {
-	ticketId: number,
-	cardData: {
-		issuer: string,
-    number: number,
-    name: string,
-    expirationDate: Date,
-    cvv: number
+	  id: number,
+    ticketId: number,
+    value: number,
+    cardIssuer: string,
+    cardLastDigits: string,
+    createdAt: Date,
+    updatedAt: Date,
 	}
-}
