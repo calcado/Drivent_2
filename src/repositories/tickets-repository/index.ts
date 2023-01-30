@@ -6,21 +6,39 @@ async function getTicketsByType(){
     return await prisma.ticketType.findMany();
 }
 
-// async function getTickets( ticket: Ticket) {
-//     return await prisma.ticket.findFirst({
-//         where : ticket.id
-//     })
-     
-// }
-
-async function postTicket(ticket: Ticket){
-    return await prisma.ticket.create({]
-    data : {
-
-    }
+async function getTicketsUser(id:number) {
+    return await prisma.ticket.findFirst({
+        where : {id},
     })
+     
+}
 
-} 
+// async function postTicket(
+//     status:string,
+//     ticketTypeId: number,
+//     enrollmentId: number,
+//     TicketType:{
+//         name:string,
+//         price:number,
+//         isRemote:boolean,
+//         includesHotel:boolean,
+//     }
+// ){
+//     return await prisma.ticket.create({
+//     data : {
+//     status,
+//     ticketTypeId,
+//     enrollmentId,
+//     TicketType:{
+//         name,
+//         price,
+//         isRemote,
+//         includesHotel
+//     }
+//     }
+//     })
+
+// } 
 
 
 
