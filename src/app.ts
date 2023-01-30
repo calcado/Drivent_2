@@ -20,6 +20,7 @@ app
   .use("/event", eventsRouter)
   .use("/enrollments", enrollmentsRouter)
   .use("/tickets", ticketsRouter)
+  .use("/payments", paymentRouter)
   
   .use(handleApplicationErrors);
   
