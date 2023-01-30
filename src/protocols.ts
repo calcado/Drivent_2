@@ -29,11 +29,57 @@ export type RequestError = {
   message: string,
 };
 
+export type Ticket = {
+    id: number,
+    name: string,
+    price: number,
+    isRemote: boolean,
+    includesHotel: boolean,
+    createdAt: Date,
+    updatedAt: Date,
+}
 export type Tickets = {
-
-name: string,
-price: number,
-isRemote: boolean,
-includesHotel: boolean,
+  
+    id: number,
+    status: string, //RESERVED | PAID
+    ticketTypeId: number,
+    enrollmentId: number,
+    TicketType: {
+      id: number,
+      name: string,
+      price: number,
+      isRemote: boolean,
+      includesHotel: boolean,
+      createdAt: Date,
+      updatedAt: Date,
+    },
+    createdAt: Date,
+    updatedAt: Date,
+  
 
 };
+export type TicketTypeId = {
+   ticketTypeId: number 
+};
+
+export type Payments = {
+	ticketId: number,
+	cardData: {
+		issuer: string, //VISA | MASTERCARD
+    number: number,
+    name: string,
+    expirationDate: Date,
+    cvv: number
+	}
+}
+
+export type PaymentsProcess = {
+	ticketId: number,
+	cardData: {
+		issuer: string,
+    number: number,
+    name: string,
+    expirationDate: Date,
+    cvv: number
+	}
+}

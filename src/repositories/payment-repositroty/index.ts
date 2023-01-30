@@ -1,36 +1,22 @@
 import { prisma } from "@/config";
+import { Prisma } from "@prisma/client";
 
-export async function getPayment(id:number){
+async function getPayment(id:number){
 return prisma.payment.findFirst({
     where: {id}
 })
 }
 
-export async function postPayment(
-    ticketId:number, 
-    cardData:{
-        issuer: string,
-        number: number,
-        name: string,
-        expirationDate: Date,
-        cvv: number,
-    }
+async function postPayment(
+    data: Prisma.PaymentUncheckedCreateInput 
     ){
 return prisma.payment.create({
-    data:{
-        ticketId,
-        cardData{
-            issuer,
-            number,
-            name,
-            expirationDate,
-            cvv,
-        }
-    }
+    data,    
 })
 }
 
-// const paymentReposiroty = {
-
-// }
-// export paymentReposiroty
+const paymentRepository = {
+    getPayment,
+    postPayment
+}
+export default paymentRepository

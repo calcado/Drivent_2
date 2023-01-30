@@ -1,50 +1,47 @@
 import { prisma } from "@/config";
+import { Prisma } from "@prisma/client";
 import { Tickets } from "@/protocols";
 import { Ticket } from "@prisma/client";
 
 async function getTicketsByType(){
-    return await prisma.ticketType.findMany();
+    return prisma.ticketType.findMany();
 }
 
 async function getTicketsUser(id:number) {
-    return await prisma.ticket.findFirst({
-        where : {id},
+    return prisma.ticket.findFirst({
+        where :{Enrollment:{id}},
+        include:{
+            TicketType:true
+        },
     })
      
 }
 
-// async function postTicket(
-//     status:string,
-//     ticketTypeId: number,
-//     enrollmentId: number,
-//     TicketType:{
-//         name:string,
-//         price:number,
-//         isRemote:boolean,
-//         includesHotel:boolean,
-//     }
-// ){
-//     return await prisma.ticket.create({
-//     data : {
-//     status,
-//     ticketTypeId,
-//     enrollmentId,
-//     TicketType:{
-//         name,
-//         price,
-//         isRemote,
-//         includesHotel
-//     }
-//     }
-//     })
+async function postTicket(data:
+    Prisma.TicketUncheckedCreateInput
+){
+    return prisma.ticket.create({
+    data,
+    select : {
+    status,
+    ticketTypeId,
+    enrollmentId,
+    TicketType:{
+        name,
+        price,
+        isRemote,
+        includesHotel
+    }
+    }
+    })
 
-// } 
+} 
 
 
 
 const ticketsRepository ={
     getTicketsByType,
-    // getTickets,
+    getTicketsUser,
     // postTicket
 }
 

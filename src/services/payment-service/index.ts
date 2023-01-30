@@ -1,8 +1,10 @@
 import { Request,Response } from "express";
-import { notFoundError } from "@/errors";
+import { notFoundError, unauthorizedError } from "@/errors";
+import paymentRepository from "@/repositories/payment-repositroty";
+import ticketsRepository from "@/repositories/tickets-repository";
 
-async function getPaymentService(req:Request,res:Response){
-
+async function getPaymentService(tickedId: number, userId:number){
+const existTicket = await ticketsRepository.getTicketsUser
 
 }
 
